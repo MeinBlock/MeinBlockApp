@@ -6,7 +6,7 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 const styles = {
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
     justifyContent: 'space-around',
   },
   gridList: {

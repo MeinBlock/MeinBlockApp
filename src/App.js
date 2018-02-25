@@ -115,12 +115,20 @@ class App extends Component {
       .then(result => console.log('DONATION to Artist ' + artistId, result.receipt));
   };
 
-  renderPage1 = () => <ArtistGridList starCounts={this.state.starCounts} onStarTap={this.makeDonation} />;
+  renderPage1 = () => (
+    <ArtistGridList starCounts={this.state.starCounts} onStarTap={this.makeDonation} />
+  );
   renderPage2 = () => <div>Page for Artist</div>;
 
   render() {
     return (
-      <div style={{ backgroundColor: '#b9b9b9' }}>
+      <div style={{ backgroundColor: 'black' }}>
+        <img src={require('../logo.jpg')} style={{
+          position: 'absolute',
+          width: 299,
+          top: 35,
+          right: 43,
+        }} />
         <Drawer onClick={newPage => this.setState({ drawerPage: newPage })} />
         { this.state.drawerPage === 1 ? this.renderPage1() : this.renderPage2() }
       </div>
