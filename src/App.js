@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import SimpleStorageContract from '../build/contracts/SimpleStorage.json';
 import MeinBlockContract from '../build/contracts/MeinBlock.json';
 import getWeb3 from './utils/getWeb3';
 
-import RaisedButton from 'material-ui/RaisedButton';
-
 import ArtistGridList from './components/ArtistGridList';
 import Drawer from './components/Drawer';
+import ProfilePage from './components/ProfilePage';
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -118,7 +116,7 @@ class App extends Component {
   renderPage1 = () => (
     <ArtistGridList starCounts={this.state.starCounts} onStarTap={this.makeDonation} />
   );
-  renderPage2 = () => <div>Page for Artist</div>;
+  renderPage2 = () => <ProfilePage />;
 
   render() {
     return (
