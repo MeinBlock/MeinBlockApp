@@ -32,7 +32,7 @@ const tilesData = [
   },
   {
     id: 2,
-    img: 'http://www.inter-peura.com/wp-content/uploads/2017/10/Krisyb.png',
+    img: 'https://www.beyeah.net/wp-content/uploads/2017/09/Krisy-beyeah.png',
     title: 'Krisy',
     author: 'pashminu',
   },
@@ -51,8 +51,8 @@ const tilesData = [
   },
   {
     id: 5,
-    img: 'https://lyricsmagazin.ch/wp-content/uploads/2017/08/DSC01964-1195x510.jpg',
-    title: 'S.O.S',
+    img: 'https://files.newsnetz.ch/story/2/9/8/29841115/2/topelement.jpg',
+    title: 'Native',
     author: 'Hans',
   },
   {
