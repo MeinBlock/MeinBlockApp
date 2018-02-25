@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
 contract MeinBlock {
-  uint public payoutThreshold = 5;
+  uint public payoutThreshold = 4;
   mapping(address => uint256) public balanceOfDonators;
   mapping(address => uint256) public balanceOfArtists;
   /**

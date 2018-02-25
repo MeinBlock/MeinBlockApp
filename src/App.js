@@ -5,7 +5,7 @@ import getWeb3 from './utils/getWeb3';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
-import GridList from './components/GridList';
+import ArtistGridList from './components/ArtistGridList';
 import Drawer from './components/Drawer';
 
 import './css/oswald.css'
@@ -109,7 +109,7 @@ class App extends Component {
     return (
       <div>
         <Drawer />
-        <GridList onStarTap={this.makeDonation} />
+        <ArtistGridList onStarTap={this.makeDonation} />
         <RaisedButton label="Press me!" onClick={this.makeDonation} />
       </div>
     );

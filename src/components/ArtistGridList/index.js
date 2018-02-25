@@ -56,7 +56,7 @@ const tilesData = [
   }
 ];
 
-const GridListExampleComplex = props => {
+const ArtistGridList = props => {
 
   return (
     <div style={styles.root}>
@@ -71,7 +71,7 @@ const GridListExampleComplex = props => {
             key={tile.img}
             title={tile.title}
             actionIcon={
-              <IconButton onClick={props.onClick(tile.id)}>
+              <IconButton onClick={() => props.onStarTap(tile.id)}>
                 <StarBorder color="white" />
               </IconButton>
             }
@@ -88,4 +88,4 @@ const GridListExampleComplex = props => {
     </div>
 )};
 
-export default GridListExampleComplex;
+export default ArtistGridList;
