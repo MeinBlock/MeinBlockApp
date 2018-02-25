@@ -91,7 +91,7 @@ class App extends Component {
         .then((result) => {
           console.log('result from initializeArtists', result);
 
-          return meinBlockInstance.makeDeposit({from: accounts[0], gas: 300000, value: 10})
+          return meinBlockInstance.makeDeposit({from: accounts[0], gas: 300000, value: 1000000000000000000})
         })
         .then((result) => {
           // Update state with the result.
@@ -106,7 +106,6 @@ class App extends Component {
 
   makeDonation = () => {
     const { instance, accounts } = this.state;
-    console.log('Donation made!');
     return instance.makeDonation(accounts[1], { from: accounts[0] })
       .then(result => console.log(result.receipt));
   };

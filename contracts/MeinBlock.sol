@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
 contract MeinBlock {
-  uint public payoutThreshold = 10;
+  uint public payoutThreshold = 5;
   mapping(address => uint256) public balanceOfDonators;
   mapping(address => uint256) public balanceOfArtists;
   /**
@@ -13,7 +13,10 @@ contract MeinBlock {
   event InitializedArtists(
     address _artist1,
     address _artist2,
-    address _artist3
+    address _artist3,
+    address _artist4,
+    address _artist5,
+    address _artist6
   );
   event Deposit(
     address _receiver,
@@ -27,11 +30,14 @@ contract MeinBlock {
   /**
    * This function initializes three artists
    */
-  function initializeArtists(address artist1, address artist2, address artist3) public {
+  function initializeArtists(address artist1, address artist2, address artist3, address artist4, address artist5, address artist6) public {
     balanceOfDonators[artist1] = 0;
     balanceOfDonators[artist2] = 0;
     balanceOfDonators[artist3] = 0;
-    InitializedArtists(artist1, artist2, artist3);
+    balanceOfDonators[artist4] = 0;
+    balanceOfDonators[artist5] = 0;
+    balanceOfDonators[artist6] = 0;
+    InitializedArtists(artist1, artist2, artist3, artist4, artist5, artist6);
   }
   /**
    * Default function that is called whenever anyone sends funds to a contract
@@ -62,7 +68,7 @@ contract MeinBlock {
   function checkIfPayoutReached(address artistAddress) internal {
     if (balanceOfArtists[artistAddress] >= payoutThreshold) {
       Payout(artistAddress, balanceOfArtists[artistAddress]);
-      artistAddress.transfer(balanceOfArtists[artistAddress]);
+      artistAddress.transfer(balanceOfArtists[artistAddress]*100000000000000000);
       balanceOfArtists[artistAddress] = 0;
     }
   }
