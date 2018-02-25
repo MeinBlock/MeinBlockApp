@@ -22,6 +22,8 @@ class App extends Component {
       web3: null,
       instance: null,
       accounts: [],
+      drawerPage: 1,  // either 1 or 2
+      starCounts: [0, 0, 0, 0, 0, 0],
     }
   }
 
@@ -98,19 +100,29 @@ class App extends Component {
     });
   }
 
+  setStarCount = index => {
+    const newStarCounts = this.state.starCounts.slice();
+    newStarCounts[index] = newStarCounts[index] + 1;
+    this.setState({ starCounts: newStarCounts });
+  };
+
   makeDonation = artistId => {
     const { instance, accounts } = this.state;
+
+    this.setStarCount(artistId - 1);
 
     return instance.makeDonation(accounts[artistId], { from: accounts[0] })
       .then(result => console.log('DONATION to Artist ' + artistId, result.receipt));
   };
 
+  renderPage1 = () => <ArtistGridList starCounts={this.state.starCounts} onStarTap={this.makeDonation} />;
+  renderPage2 = () => <div>Page for Artist</div>;
+
   render() {
     return (
-      <div>
-        <Drawer />
-        <ArtistGridList onStarTap={this.makeDonation} />
-        <RaisedButton label="Press me!" onClick={this.makeDonation} />
+      <div style={{ backgroundColor: '#b9b9b9' }}>
+        <Drawer onClick={newPage => this.setState({ drawerPage: newPage })} />
+        { this.state.drawerPage === 1 ? this.renderPage1() : this.renderPage2() }
       </div>
     );
   }

@@ -21,30 +21,24 @@ export default class DrawerUndockedExample extends React.Component {
 
   handleToggle = () => this.setState({open: !this.state.open});
 
-  handleClose = () => this.setState({open: false});
+  handleClose = newPage => {
+    this.setState({open: false}, () => this.props.onClick(newPage));
+  };
 
   render() {
     return (
       <div>
-        <div style={styles.buttonContainer}>
-          <div>
-
-          </div>
-
-        </div>
-
         <Drawer
           docked={false}
           width={200}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-          <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-          <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+          <MenuItem onClick={() => this.handleClose(1)}>Block Musicians</MenuItem>
+          <MenuItem onClick={() => this.handleClose(2)}>Artist Page</MenuItem>
         </Drawer>
         <RaisedButton
           style={{ flex: 1 }}
-          className={''}
           label="Open Drawer"
           onClick={this.handleToggle}
         />

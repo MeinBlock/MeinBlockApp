@@ -13,6 +13,13 @@ const styles = {
     width: 800,
     overflowY: 'auto',
   },
+  numberCounter: {
+    color: 'white',
+    position: 'absolute',
+    top: 12,
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
 };
 
 const tilesData = [
@@ -66,14 +73,18 @@ const ArtistGridList = props => {
         padding={1}
         style={styles.gridList}
       >
-        {tilesData.map(tile => (
+        {tilesData.map((tile, ind) => (
           <GridTile
             key={tile.img}
             title={tile.title}
+            titleStyle={{ marginLeft: 20 }}
             actionIcon={
-              <IconButton onClick={() => props.onStarTap(tile.id)}>
-                <StarBorder color="white" />
-              </IconButton>
+              <div>
+                <IconButton onClick={() => props.onStarTap(tile.id)}>
+                  <StarBorder color="white" />
+                </IconButton>
+                <span style={styles.numberCounter}>{props.starCounts[ind]}</span>
+              </div>
             }
             actionPosition="left"
             titlePosition="top"
