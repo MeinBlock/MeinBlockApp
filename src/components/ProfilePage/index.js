@@ -8,7 +8,6 @@ const styles = {
     flexDirection: 'row',
     color: 'white',
     justifyContent: 'flex-start',
-    justifyContent: 'flex-start',
   },
   subContainer: {
     padding: '20%',
@@ -34,7 +33,7 @@ export default class ProfilePage extends React.Component {
         <div style={styles.subContainer}>
           <div style={{ marginBottom: 20, fontSize: 25 }}>Danitsa</div>
           <div style={styles.imageWrapper}>
-            <img style={styles.image} src={'http://gds.fm/sites/default/files/styles/adaptive_image/adaptive-image/public/field/image/a2618472284_10.jpg'} />
+            <img style={styles.image} src={'http://gds.fm/sites/default/files/styles/adaptive_image/adaptive-image/public/field/image/a2618472284_10.jpg'} alt={'Danitsa'} />
           </div>
 
         </div>
