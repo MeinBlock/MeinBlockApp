@@ -15,14 +15,13 @@ import './App.css'
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       storageValue: 0,
       web3: null,
       instance: null,
       accounts: [],
-      data: [],
     }
   }
 
@@ -67,8 +66,6 @@ class App extends Component {
       this.setState({ accounts });
 
 
-
-
       meinBlockContract.deployed().then(instance => {
         this.setState({ instance });
         meinBlockInstance = instance;
@@ -91,33 +88,28 @@ class App extends Component {
         });
 
 
-
-        return meinBlockInstance.initializeArtists(accounts[1], accounts[2], accounts[3], { from: accounts[0] });
+        // Initialize Artists
+        return meinBlockInstance.initializeArtists(accounts[1], accounts[2], accounts[3], accounts[4], accounts[5], accounts[6], { from: accounts[0] });
       })
-        .then((result) => {
-          console.log('result from initializeArtists', result);
-
+        .then(() => {
+          // Make initial deposit!
           return meinBlockInstance.makeDeposit({from: accounts[0], gas: 300000, value: 1000000000000000000})
-        })
-        .then((result) => {
-          // Update state with the result.
-          console.log('result', result);
-          return meinBlockInstance.makeDonation(accounts[1], { from: accounts[0] });
         });
     });
   }
 
-  makeDonation = () => {
+  makeDonation = artistId => {
     const { instance, accounts } = this.state;
-    return instance.makeDonation(accounts[1], { from: accounts[0] })
-      .then(result => console.log(result.receipt));
+
+    return instance.makeDonation(accounts[artistId], { from: accounts[0] })
+      .then(result => console.log('DONATION to Artist ' + artistId, result.receipt));
   };
 
   render() {
     return (
       <div>
-        <Drawer/>
-        <GridList />
+        <Drawer />
+        <GridList onStarTap={this.makeDonation} />
         <RaisedButton label="Press me!" onClick={this.makeDonation} />
       </div>
     );
