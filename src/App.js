@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import MeinBlockContract from '../build/contracts/MeinBlock.json';
 import getWeb3 from './utils/getWeb3';
 
+import RaisedButton from 'material-ui/RaisedButton';
+
+import GridList from './components/GridList';
+import Drawer from './components/Drawer';
+
 import './css/oswald.css'
 import './css/open-sans.css'
 import './css/pure-min.css'
@@ -17,6 +22,7 @@ class App extends Component {
       web3: null,
       instance: null,
       accounts: [],
+      data: [],
     }
   }
 
@@ -101,9 +107,6 @@ class App extends Component {
     });
   }
 
-  // ether is Float
-  inWei = ether => this.state.web3.toWei(ether.toString(), 'ether');
-
   makeDonation = () => {
     const { instance, accounts } = this.state;
     return instance.makeDonation(accounts[1], { from: accounts[0] })
@@ -112,28 +115,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">Truffle Box</a>
-        </nav>
-
-        <main className="container">
-
-          <div style={{ color: 'red', fontSize: 20 }} onClick={this.makeDonation}>
-            Press me!
-          </div>
-
-          <div className="pure-g">
-            <div className="pure-u-1-1">
-              <h1>Good to Go!</h1>
-              <p>Your Truffle Box is installed and ready.</p>
-              <h2>Smart Contract Example</h2>
-              <p>If your contracts compiled and migrated successfully, below will show a stored value of 5 (by default).</p>
-              <p>Try changing the value stored on <strong>line 59</strong> of App.js.</p>
-              <p>The stored value is: {this.state.storageValue}</p>
-            </div>
-          </div>
-        </main>
+      <div>
+        <Drawer/>
+        <GridList />
+        <RaisedButton label="Press me!" onClick={this.makeDonation} />
       </div>
     );
   }
